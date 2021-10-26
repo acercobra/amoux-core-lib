@@ -35,6 +35,7 @@ repositories {
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
     implementation("com.google.guava:guava:30.1.1-jre")
     implementation("redis.clients:jedis:3.6.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt")
@@ -44,6 +45,7 @@ dependencies {
     implementation("io.grpc:grpc-protobuf:1.41.0")
     implementation("io.grpc:grpc-kotlin-stub:1.1.0")
     implementation("io.grpc:grpc-stub:1.41.0")
+    implementation("com.google.code.gson:gson:2.8.8")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }

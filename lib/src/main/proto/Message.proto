@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.codifysoftware.amoux.proto.message";
+option java_outer_classname = "MessageProto";
+
+package message;
+
+message MessageInfo {
+  string id = 1;
+  string senderNode = 2;
+  repeated string targetNode = 3;
+  int64 timestamp = 4;
+  oneof payload {
+    PingInfo ping = 5;
+    PongInfo pong = 6;
+  }
+}
+
+message PingInfo {
+  bool reply = 1;
+}
+
+message PongInfo {
+  string pingId = 1;
+}
