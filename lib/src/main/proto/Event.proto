@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.codifysoftware.amoux.proto.event";
+option java_outer_classname = "EventProto";
+
+package event;
+
+message EventInfo {
+  string id = 1;
+}
