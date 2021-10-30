@@ -2,10 +2,15 @@ package cache
 
 import AmouxCore
 import com.google.gson.GsonBuilder
+import utils.toSizeString
 
 class RedisCache(private val amouxCore: AmouxCore) {
 
     private val gson = GsonBuilder().serializeNulls().setLenient().create()
+
+    init {
+        amouxCore.logger.debug { "Initiated RedisCache" }
+    }
 
     fun saveModel(key: String, model: Any, expire: Long = 0): Boolean {
         val data = gson.toJson(model)
@@ -21,11 +26,10 @@ class RedisCache(private val amouxCore: AmouxCore) {
             }
         }
 
-        if (result.isNullOrBlank()) {
-            return false
-        }
-
-        return result.equals("ok", true)
+        val success = result?.equals("ok", true) == true
+        amouxCore.logger.debug { "Tried to save in cache \"$key\" with expiration in $expire seconds: $success" }
+        amouxCore.logger.debug { "Cache \"$key\" size: ${data.length.toSizeString()}" }
+        return success
     }
 
     fun <T:Any> getModel(key: String, modelType: Class<T>): T? {

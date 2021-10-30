@@ -16,7 +16,7 @@ plugins {
 group = "org.codifysoftware.amoux"
 
 /** Artifact version. Note that "SNAPSHOT" in the version is not supported by bintray. */
-version = "1.0.2"
+version = "1.0.3a"
 
 val myArtifactId: String = rootProject.name
 val myArtifactGroup: String = project.group.toString()
@@ -36,6 +36,7 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
+    implementation("org.slf4j:slf4j-log4j12:1.7.30")
     implementation("com.google.guava:guava:30.1.1-jre")
     implementation("redis.clients:jedis:3.6.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt")
@@ -46,6 +47,7 @@ dependencies {
     implementation("io.grpc:grpc-kotlin-stub:1.1.0")
     implementation("io.grpc:grpc-stub:1.41.0")
     implementation("com.google.code.gson:gson:2.8.8")
+    implementation("io.github.microutils:kotlin-logging-jvm:2.0.10")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }

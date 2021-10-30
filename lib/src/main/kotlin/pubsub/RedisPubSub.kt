@@ -16,9 +16,13 @@ class RedisPubSub(private val amouxCore: AmouxCore): JedisPubSub() {
     private val channelListeners = ConcurrentHashMap<String, HashSet<RedisChannelListener>>()
     private val channelRedis = ConcurrentHashMap<String, Jedis>()
 
+    init {
+        amouxCore.logger.debug { "Initiated RedisPubSub" }
+    }
+
     private suspend fun listenOn(channelName: String) {
         if (channelRedis.containsKey(channelName)) {
-            println("Trying to listen on a channel already register to: $channelName")
+            amouxCore.logger.error { "Trying to listen on a channel already register to: $channelName" }
             return
         }
 
